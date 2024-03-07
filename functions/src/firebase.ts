@@ -1,5 +1,5 @@
-import admin from 'firebase-admin';
-import 'dotenv/config'
+import admin from "firebase-admin";
+import "dotenv/config";
 
 const firebaseConfig = {
   type: process.env.TYPE,
@@ -16,7 +16,7 @@ const firebaseConfig = {
 };
 
 admin.initializeApp({
-  credential: admin.credential.cert(firebaseConfig as admin.ServiceAccount)
+  credential: admin.credential.cert(firebaseConfig as admin.ServiceAccount),
 });
 
 export const db = admin.firestore();
