@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
 import express from "express";
 import * as functions from "firebase-functions";
-import stationsRoutes from "./routes/route.service.ts";
+import stationsRoutes from "./routes/route.service";
 import handleException from "./middleware/uncaughtErrorsHandler";
 import errorHandler from "./middleware/unhandledErrorsHandler";
 
