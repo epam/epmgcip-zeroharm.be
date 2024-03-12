@@ -1,6 +1,6 @@
 import { ErrorRequestHandler } from "express";
 
-const errorHandler: ErrorRequestHandler = (err, _req, res, _next) => {
+const errorHandler: ErrorRequestHandler = (err, _req, res) => {
   console.log(err);
   res.status(500).send(`${err} Internal Server Error`);
 };
