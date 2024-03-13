@@ -1,7 +1,7 @@
 import dotenv from "dotenv";
-import express from "express";
+import express, { Request, Response, NextFunction } from "express";
 import * as functions from "firebase-functions";
-import stationsRoutes from "./routes/route.service";
+import stationsRoutes from "./routes/stations.route";
 import handleException from "./middleware/uncaughtErrorsHandler";
 import errorHandler from "./middleware/unhandledErrorsHandler";
 
@@ -13,7 +13,15 @@ app.use(express.json());
 
 handleException();
 
-app.use("/", stationsRoutes);
+app.use("/", (req: Request, res: Response, next: NextFunction): void => {
+  if (req.originalUrl === "/") {
+    res.send("Service is running!");
+    return;
+  }
+  next();
+});
+
+app.use("/stations", stationsRoutes);
 
 app.use(errorHandler);
 
